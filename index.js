@@ -11,11 +11,21 @@ function addTask(){
     const listItem = document.createElement("li");
     listItem.innerHTML = `<span>${task}</span>
                     <div>
-                        <button onclick="completeTask(this)">Complete</button>
-                        <button onclick="deleteTask(this)">Delete</button>
+                        <button onclick="completeTask(this)"> ✔ </button>
+                        <button onclick="deleteTask(this)"> ✘ </button>
                     </div>
                         `;
 
     taskList.appendChild(listItem);
     taskInp.value = "";
+}
+
+function completeTask(button){
+    const listItem = button.closest("li");
+    listItem.querySelector("span").classList.toggle("completed");
+}
+
+function deleteTask(button){
+    const listItem = button.closest("li");
+    listItem.remove();
 }
